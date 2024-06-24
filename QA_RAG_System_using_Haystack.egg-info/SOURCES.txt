@@ -1,0 +1,7 @@
+README.md
+setup.py
+QA_RAG_System_using_Haystack.egg-info/PKG-INFO
+QA_RAG_System_using_Haystack.egg-info/SOURCES.txt
+QA_RAG_System_using_Haystack.egg-info/dependency_links.txt
+QA_RAG_System_using_Haystack.egg-info/requires.txt
+QA_RAG_System_using_Haystack.egg-info/top_level.txt
