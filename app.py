@@ -1,4 +1,3 @@
-# fastapi
 from fastapi import FastAPI, Request, Form, Response
 from fastapi.templating import Jinja2Templates
 from fastapi.encoders import jsonable_encoder
@@ -7,7 +6,7 @@ from fastapi import FastAPI
 import json
 import os
 from dotenv import load_dotenv
-# from QASystem.retrievalandgenrator import get_result
+from QASystem.retrievalandgeneration import get_result
 
 # object of fastapi
 app = FastAPI()
@@ -24,4 +23,11 @@ async def index(request: Request):
 
 @app.post("/get_answer")
 async def get_answer(request: Request, question: str=Form(...)):
-    pass
+    print(question)
+    answer = get_result(question)
+    response_data = jsonable_encoder(json.dumps({"answer": answer}))
+    res = Response(response_data)
+    return res
+
+if __name__ == "__main__":
+    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)

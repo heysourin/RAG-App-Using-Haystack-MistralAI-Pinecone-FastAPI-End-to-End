@@ -25,10 +25,11 @@ def ingest(document_store):
     indexing.connect("splitter", "embedder")
     indexing.connect("embedder", "writer")
 
-    path = "/home/ryle/Desktop/gen-ai/data/Retrieval-Augmented-Generation-for-NLP.pdf"
+    path = "/teamspace/studios/this_studio/RAG-Application-Using-Haystack-MistralAI-Pinecone-FastAPI-End-to-End/data/Retrieval-Augmented-Generation-for-NLP.pdf"
     indexing.run({"converter": {"sources": [Path(path)]}})
 
 
 if __name__ == '__main__':
     document_store = pinecone_config()
     ingest(document_store)
+    print("Document store configured successfully!")

@@ -1,6 +1,6 @@
-fastapi
-haystack-ai
-pathlib
 pinecone-haystack
-python-dotenv
+haystack-ai
+fastapi
 uvicorn
+python-dotenv
+pathlib

@@ -1,4 +1,3 @@
-# pycone db
 from haystack_integrations.document_stores.pinecone import PineconeDocumentStore
 import os
 from dotenv import load_dotenv
@@ -11,13 +10,21 @@ HF_TOKEN = os.environ.get('HF_TOKEN')
 os.environ['PINECONE_API_KEY'] = PINECONE_API_KEY
 os.environ['HF_TOKEN'] = HF_TOKEN
 
-print("API Key inported successfully!")
+print("utils.py: API Key imported successfully!")
 
+# Wrapper class for the API key
+class ApiKeyWrapper:
+    def __init__(self, api_key):
+        self.api_key = api_key
+
+    def resolve_value(self):
+        return self.api_key
 
 def pinecone_config():
+    wrapped_api_key = ApiKeyWrapper(os.environ['PINECONE_API_KEY'])
+    
     document_store = PineconeDocumentStore(
-        # environment="gcp-starter",
-        api_key=PINECONE_API_KEY,
+        api_key=wrapped_api_key,
         index="default",
         namespace="default",
         dimension=768
